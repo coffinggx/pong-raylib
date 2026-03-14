@@ -1,7 +1,5 @@
 #pragma once
 #include<raylib.h>
-#include<iostream>
-
 class Ball{
     float velocityX;
     float posX;
@@ -14,6 +12,8 @@ class Ball{
         Ball();
         void coordinateBall();
         void drawBall() const;
-        void moveBall();
+        void updateBall();
+        void updateBasedOnSlider(Rectangle);
+        void resetPos();
 };
 
