@@ -1,4 +1,6 @@
-#pragma once
+#ifndef SLIDER_H
+#define SLIDER_H
+
 #include<raylib.h>
 enum class Type{
     LEFT,
@@ -18,3 +20,5 @@ class Slider{
         void moveSlider();
         Rectangle getInfo() const;
 };
+
+#endif 

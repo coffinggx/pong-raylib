@@ -1,4 +1,5 @@
-#pragma once
+#ifndef BALL_H
+#define BALL_H
 #include<raylib.h>
 class Ball{
     float velocityX;
@@ -12,8 +13,9 @@ class Ball{
         Ball();
         void coordinateBall();
         void drawBall() const;
-        void updateBall();
+        void updateBall(int*, int*);
         void updateBasedOnSlider(Rectangle);
         void resetPos();
 };
 
+#endif // !BALL_H

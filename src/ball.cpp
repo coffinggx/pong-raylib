@@ -6,14 +6,16 @@ void Ball::drawBall() const{
     Vector2 ball_coords  { posX,posY};
     DrawCircleV(ball_coords,radius,DARKBROWN);
 }
+
 Ball::Ball(){
     velocityX = 10.0;
     velocityY = 10.0f;
     radius = 10.0f;
-    applyGravity =true;
+    applyGravity = true;
     posX=(float)width/2;
     posY = (float)height/2;
 }
+
 void Ball::resetPos(){
     posY = (float)GetScreenHeight()/2;
     posX = (float)GetScreenWidth()/2;
@@ -21,7 +23,7 @@ void Ball::resetPos(){
     velocityX *= choice.at(GetRandomValue(0, 1));
     velocityY *= choice.at(GetRandomValue(0, 1));
 }
-void Ball::updateBall(){
+void Ball::updateBall(int* player1Score, int* player2Score){
     posX += velocityX;
     posY +=velocityY;
 
@@ -29,19 +31,18 @@ void Ball::updateBall(){
         velocityY *= -1;
     }
     if (posX+radius >= GetScreenWidth() ){
+        *player1Score += 1;
         resetPos();
     }
     if(posX - radius <= 0){
+        *player2Score += 1;
         resetPos();
     }
  }
 
+// check collision between circle and Rectangle
 void Ball::updateBasedOnSlider(Rectangle rect){
     if(CheckCollisionCircleRec(Vector2{posX,posY}, radius,rect)){
         velocityX *= -1;
     }
 }
-
-
-
-
